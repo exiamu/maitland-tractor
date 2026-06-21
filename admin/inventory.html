@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Inventory Admin | Maitland Tractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-header-logo">
+        Maitland Tractor <span>Admin</span>
+      </div>
+      <nav class="admin-header-nav">
+        <a href="../admin.html" class="admin-header-link">Dashboard</a>
+        <button type="button" id="back-to-site-btn" class="admin-logout">&#8592; Back to Site</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-main-inner">
+
+      <h1 class="admin-page-title">Tractor Inventory</h1>
+
+      <!-- Notices -->
+      <div id="notice-success" class="admin-notice admin-notice--success" role="alert"></div>
+      <div id="notice-error" class="admin-notice admin-notice--error" role="alert"></div>
+
+      <!-- Add / Edit form -->
+      <section class="admin-section">
+        <h2 class="admin-section-title" id="form-title">Add New Tractor</h2>
+
+        <form id="add-form" class="admin-form" novalidate>
+
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label for="make" class="admin-label">Make <span style="color:var(--rust)">*</span></label>
+              <input type="text" id="make" class="admin-input" placeholder="e.g. Massey Ferguson" required>
+            </div>
+            <div class="admin-form-group">
+              <label for="model" class="admin-label">Model <span style="color:var(--rust)">*</span></label>
+              <input type="text" id="model" class="admin-input" placeholder="e.g. 231" required>
+            </div>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label for="year" class="admin-label">Year <span class="admin-label-hint">(optional)</span></label>
+              <input type="text" id="year" class="admin-input" placeholder="e.g. 1998">
+            </div>
+            <div class="admin-form-group">
+              <label for="price" class="admin-label">Price <span class="admin-label-hint">(blank = "Call for Price")</span></label>
+              <input type="text" id="price" class="admin-input" placeholder="e.g. $8,500">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label for="features" class="admin-label">Features <span class="admin-label-hint">(comma-separated)</span></label>
+            <input type="text" id="features" class="admin-input" placeholder="e.g. Diesel, Power Steering, 3-Point Hitch, 4WD">
+            <p class="admin-form-hint">Each item becomes its own badge on the listing.</p>
+          </div>
+
+          <div class="admin-form-group">
+            <label for="description" class="admin-label">Description <span class="admin-label-hint">(optional)</span></label>
+            <textarea id="description" class="admin-textarea" placeholder="Condition, hours, any details that help a buyer."></textarea>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Photos <span class="admin-label-hint">(optional)</span></label>
+            <label class="photo-upload-zone" for="photo-input">
+              <input type="file" id="photo-input" accept="image/*" multiple>
+              <span class="photo-upload-label-text">+ Add Photos</span>
+              <span class="photo-upload-hint-text">Hold Ctrl or &#8984; to select multiple at once. Click again to add more.</span>
+            </label>
+            <div id="photo-preview" class="photo-preview-strip"></div>
+          </div>
+
+          <div class="admin-form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">Add Tractor</button>
+            <button type="button" id="cancel-edit-btn" class="btn btn-ghost" hidden>Cancel Edit</button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- All listings -->
+      <section class="admin-section">
+        <h2 class="admin-section-title">
+          All Listings
+          <span id="listing-count" style="font-family:var(--font-body);font-size:var(--text-xs);font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-muted);margin-left:0.5rem;"></span>
+        </h2>
+
+        <div id="listings" class="admin-listings">
+          <p class="admin-empty-state">Loading&hellip;</p>
+        </div>
+      </section>
+
+      <!-- Export / backup -->
+      <section class="admin-section">
+        <h2 class="admin-section-title">Backup</h2>
+        <div class="admin-export-box">
+          <div class="admin-export-text">
+            <p class="admin-export-title">Download inventory backup</p>
+            <p class="admin-export-desc">
+              Downloads a <code>tractors.js</code> file with all current inventory from Firebase.
+              Useful as an offline backup or for developer reference.
+            </p>
+          </div>
+          <div class="admin-export-actions">
+            <button id="export-btn" class="btn btn-primary" type="button">Download Backup</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Seed data — loaded into Firebase automatically if the database is empty on first visit -->
+  <script src="../data/tractors.js"></script>
+
+  <script>
+    (function () {
+      var FB_URL = 'https://maitland-tractor-default-rtdb.firebaseio.com';
+      var FB_SECRET = 'IibBjSnWaa7yA39FAyGKmDFa2VvYb4E5Dy9Dr6lC';
+
+      /* --- Auth guard --- */
+      if (sessionStorage.getItem('mts_admin_auth') !== 'true') {
+        window.location.replace('../admin.html');
+      }
+
+      /* --- State --- */
+      var currentListings = [];
+      var photoBuffer = [];
+      var editingId = null;
+
+      /* --- Firebase helpers --- */
+      function toArray(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === 'object') return Object.values(data);
+        return [];
+      }
+
+      function saveToFirebase(arr, onSuccess) {
+        fetch(FB_URL + '/inventory.json?auth=' + FB_SECRET, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(arr)
+        })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function () {
+          currentListings = arr;
+          if (onSuccess) onSuccess();
+        })
+        .catch(function () {
+          showNotice('error', 'Save failed — check your connection and try again.');
+        });
+      }
+
+      /* --- Notices --- */
+      var noticeTimer = null;
+      function showNotice(type, msg) {
+        clearTimeout(noticeTimer);
+        var success = document.getElementById('notice-success');
+        var error = document.getElementById('notice-error');
+        success.classList.remove('is-visible');
+        error.classList.remove('is-visible');
+        var el = type === 'success' ? success : error;
+        el.textContent = msg;
+        el.classList.add('is-visible');
+        noticeTimer = setTimeout(function () { el.classList.remove('is-visible'); }, 4500);
+      }
+
+      /* --- Photo helpers --- */
+      function photoDisplaySrc(path) {
+        if (!path) return '';
+        if (path.startsWith('data:image/')) return path;
+        return '../' + path;
+      }
+
+      function renderPreviews() {
+        var strip = document.getElementById('photo-preview');
+        if (photoBuffer.length === 0) { strip.innerHTML = ''; return; }
+        strip.innerHTML = photoBuffer.map(function (src, i) {
+          return '<div class="photo-thumb">'
+            + '<img src="' + photoDisplaySrc(src) + '" alt="Photo ' + (i + 1) + '">'
+            + '<button type="button" class="photo-thumb-remove" data-idx="' + i + '" aria-label="Remove photo">&times;</button>'
+            + '</div>';
+        }).join('');
+      }
+
+      document.getElementById('photo-input').addEventListener('change', function () {
+        var files = Array.from(this.files);
+        if (!files.length) return;
+        var remaining = files.length;
+        files.forEach(function (file) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            photoBuffer.push(e.target.result);
+            remaining--;
+            if (remaining === 0) renderPreviews();
+          };
+          reader.readAsDataURL(file);
+        });
+        this.value = '';
+      });
+
+      document.getElementById('photo-preview').addEventListener('click', function (e) {
+        var btn = e.target.closest('.photo-thumb-remove');
+        if (!btn) return;
+        photoBuffer.splice(parseInt(btn.dataset.idx, 10), 1);
+        renderPreviews();
+      });
+
+      /* --- Edit mode --- */
+      function enterEditMode(id) {
+        var item = null;
+        for (var i = 0; i < currentListings.length; i++) {
+          if (currentListings[i].id === id) { item = currentListings[i]; break; }
+        }
+        if (!item) return;
+
+        editingId = id;
+
+        document.getElementById('make').value = item.make || '';
+        document.getElementById('model').value = item.model || '';
+        document.getElementById('year').value = item.year || '';
+        document.getElementById('price').value = item.price || '';
+        document.getElementById('features').value = (item.features || []).join(', ');
+        document.getElementById('description').value = item.description || '';
+
+        photoBuffer = (item.photos || []).slice();
+        renderPreviews();
+
+        document.getElementById('form-title').textContent = 'Edit Tractor';
+        document.getElementById('submit-btn').textContent = 'Save Changes';
+        document.getElementById('cancel-edit-btn').hidden = false;
+
+        document.querySelectorAll('.admin-listing-edit').forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.dataset.id === id);
+        });
+
+        document.getElementById('add-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function exitEditMode() {
+        editingId = null;
+        document.getElementById('add-form').reset();
+        photoBuffer = [];
+        renderPreviews();
+        document.getElementById('form-title').textContent = 'Add New Tractor';
+        document.getElementById('submit-btn').textContent = 'Add Tractor';
+        document.getElementById('cancel-edit-btn').hidden = true;
+        document.querySelectorAll('.admin-listing-edit').forEach(function (btn) {
+          btn.classList.remove('is-active');
+        });
+      }
+
+      document.getElementById('cancel-edit-btn').addEventListener('click', exitEditMode);
+
+      /* --- Form submit (add or edit) --- */
+      document.getElementById('add-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var make = document.getElementById('make').value.trim();
+        var model = document.getElementById('model').value.trim();
+        if (!make || !model) { showNotice('error', 'Make and Model are required.'); return; }
+
+        var year = document.getElementById('year').value.trim() || null;
+        var price = document.getElementById('price').value.trim() || null;
+        var featuresRaw = document.getElementById('features').value.trim();
+        var features = featuresRaw
+          ? featuresRaw.split(',').map(function (s) { return s.trim(); }).filter(Boolean)
+          : [];
+        var description = document.getElementById('description').value.trim();
+
+        var updated = currentListings.slice();
+
+        if (editingId) {
+          var found = false;
+          for (var i = 0; i < updated.length; i++) {
+            if (updated[i].id === editingId) {
+              updated[i] = {
+                id: editingId,
+                make: make, model: model, year: year,
+                features: features, photos: photoBuffer.slice(),
+                description: description, price: price,
+                status: updated[i].status || 'available'
+              };
+              found = true;
+              break;
+            }
+          }
+          if (!found) { showNotice('error', 'Could not find the listing to update.'); return; }
+          var editLabel = make + ' ' + model;
+          exitEditMode();
+          currentListings = updated;
+          renderListings();
+          saveToFirebase(updated, function () { showNotice('success', editLabel + ' updated.'); });
+        } else {
+          var listing = {
+            id: 'tractor-' + Date.now(),
+            make: make, model: model, year: year,
+            features: features, photos: photoBuffer.slice(),
+            description: description, price: price,
+            status: 'available'
+          };
+          updated.push(listing);
+          var addLabel = make + ' ' + model;
+          currentListings = updated;
+          this.reset();
+          photoBuffer = [];
+          renderPreviews();
+          renderListings();
+          saveToFirebase(updated, function () { showNotice('success', addLabel + ' added.'); });
+        }
+      });
+
+      /* --- Render listings --- */
+      function renderListings() {
+        var container = document.getElementById('listings');
+        var countEl = document.getElementById('listing-count');
+
+        countEl.textContent = currentListings.length ? '(' + currentListings.length + ')' : '';
+
+        if (currentListings.length === 0) {
+          container.innerHTML = '<p class="admin-empty-state">No tractors in inventory yet. Add one above.</p>';
+          return;
+        }
+
+        container.innerHTML = currentListings.map(function (t) {
+          var label = [(t.year || ''), (t.make || ''), (t.model || '')].filter(Boolean).join(' ');
+          var meta = [];
+          if (t.features && t.features.length) meta.push(t.features.slice(0, 3).join(', '));
+          if (t.photos && t.photos.length) meta.push(t.photos.length + (t.photos.length === 1 ? ' photo' : ' photos'));
+          if (t.price) meta.push(t.price);
+
+          return '<div class="admin-listing-item">'
+            + '<div class="admin-listing-info">'
+            + '<p class="admin-listing-label">' + escHtml(label) + '</p>'
+            + (meta.length ? '<p class="admin-listing-meta">' + escHtml(meta.join(' · ')) + '</p>' : '')
+            + '</div>'
+            + '<div class="admin-listing-actions">'
+            + '<button type="button" class="admin-listing-edit" data-id="' + escHtml(t.id) + '">Edit</button>'
+            + '<button type="button" class="admin-listing-delete" data-id="' + escHtml(t.id) + '">Delete</button>'
+            + '</div>'
+            + '</div>';
+        }).join('');
+      }
+
+      document.getElementById('listings').addEventListener('click', function (e) {
+        var editBtn = e.target.closest('.admin-listing-edit');
+        var deleteBtn = e.target.closest('.admin-listing-delete');
+
+        if (editBtn) {
+          enterEditMode(editBtn.dataset.id);
+          return;
+        }
+
+        if (deleteBtn) {
+          var id = deleteBtn.dataset.id;
+          var item = null;
+          for (var i = 0; i < currentListings.length; i++) {
+            if (currentListings[i].id === id) { item = currentListings[i]; break; }
+          }
+          var label = item ? [(item.make || ''), (item.model || '')].filter(Boolean).join(' ') : 'this tractor';
+          if (!confirm('Delete ' + label + '? This cannot be undone.')) return;
+
+          var updated = currentListings.filter(function (t) { return t.id !== id; });
+          if (editingId === id) exitEditMode();
+          currentListings = updated;
+          renderListings();
+          saveToFirebase(updated, function () { showNotice('success', label + ' removed.'); });
+        }
+      });
+
+      /* --- Backup download --- */
+      document.getElementById('export-btn').addEventListener('click', function () {
+        var content = [
+          '/* Maitland Tractor — Inventory Backup',
+          '   Exported: ' + new Date().toLocaleDateString() + ' */',
+          '',
+          'window.SEED_INVENTORY = ' + JSON.stringify(currentListings, null, 2) + ';'
+        ].join('\n');
+        downloadFile('tractors-backup.js', content, 'text/javascript');
+        showNotice('success', 'Backup downloaded.');
+      });
+
+      /* --- Back to Site --- */
+      document.getElementById('back-to-site-btn').addEventListener('click', function () {
+        sessionStorage.removeItem('mts_admin_auth');
+        window.location.href = '../index.html';
+      });
+
+      /* --- Utilities --- */
+      function escHtml(str) {
+        return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function downloadFile(name, content, type) {
+        var blob = new Blob([content], { type: type });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1000);
+      }
+
+      /* --- Init: load from Firebase, auto-seed if empty --- */
+      function init() {
+        fetch(FB_URL + '/inventory.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var loaded = toArray(data);
+            if (loaded.length === 0 && Array.isArray(window.SEED_INVENTORY) && window.SEED_INVENTORY.length > 0) {
+              currentListings = window.SEED_INVENTORY.slice();
+              saveToFirebase(currentListings, function () {
+                renderListings();
+                showNotice('success', 'Default inventory loaded into Firebase.');
+              });
+              return;
+            }
+            currentListings = loaded;
+            renderListings();
+          })
+          .catch(function () {
+            document.getElementById('listings').innerHTML =
+              '<p class="admin-empty-state" style="color:var(--rust)">Could not connect to Firebase. Check your internet connection.</p>';
+          });
+      }
+
+      init();
+    })();
+  </script>
+
+</body>
+</html>

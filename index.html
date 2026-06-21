@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Maitland Tractor Sales & Service — Quality pre-owned tractors, implements, and expert repair in Maitland, Florida. Family-owned since 1972. Call (407) 834-7272.">
+  <title>Maitland Tractor Sales &amp; Service | Since 1972</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Maitland Tractor Sales &amp; Service — Home">
+        Maitland Tractor
+        <span>Sales &amp; Service</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="pages/tractors.html">Inventory</a></li>
+          <li><a href="pages/services.html">Services</a></li>
+          <li><a href="pages/implements.html">Implements</a></li>
+          <li><a href="pages/about.html">Our Story</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+14078347272" class="nav-phone">(407) 834-7272</a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero ---------------------------------------- -->
+    <section class="hero" aria-label="Welcome to Maitland Tractor">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Est. 1972 &middot; Maitland, Florida</p>
+        <h1 class="hero-headline">
+          It Ain't<br>
+          No Joke<br>
+          <em>When Your<br>Tractor's<br>Broke.</em>
+        </h1>
+        <p class="hero-sub">
+          Sales, service, and parts for all makes and models.
+          Family-owned, same location, over fifty years.
+        </p>
+        <div class="hero-actions">
+          <a href="#inventory" class="btn btn-primary">Browse Inventory</a>
+          <a href="tel:+14078347272" class="btn btn-ghost">Call (407) 834-7272</a>
+        </div>
+      </div>
+
+      <div class="hero-photo" aria-hidden="true">
+        <img
+          src="examples/tractors_photos/massey_ferguson_231/pops.png"
+          alt="Massey Ferguson 231 tractor at golden hour"
+          width="900"
+          height="1100"
+        >
+      </div>
+    </section>
+
+    <!-- Trust strip ---------------------------------- -->
+    <div class="trust-strip" aria-label="Quick facts">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <p class="trust-label">In Business</p>
+          <p class="trust-value">Since 1972</p>
+          <p class="trust-note">Family-owned, same location</p>
+        </div>
+        <div class="trust-item">
+          <p class="trust-label">Call Us</p>
+          <p class="trust-value">(407) 834-7272</p>
+          <p class="trust-note">Mon&ndash;Fri 8am&ndash;5pm &middot; Sat 8am&ndash;12pm</p>
+        </div>
+        <div class="trust-item">
+          <p class="trust-label">Find Us</p>
+          <p class="trust-value">Maitland, FL</p>
+          <p class="trust-note">9225 S US Hwy 17/92</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services ------------------------------------- -->
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">What We Do</p>
+          <h2 class="section-title" id="services-title">Sales, Service &amp; Everything Between</h2>
+        </div>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <p class="service-num">01</p>
+            <h3 class="service-title">Tractor Sales</h3>
+            <p class="service-desc">Quality pre-owned tractors from Massey Ferguson, Kubota, Ford, and more. Rotating inventory &mdash; call for what&rsquo;s on the lot today.</p>
+          </div>
+
+          <div class="service-card">
+            <p class="service-num">02</p>
+            <h3 class="service-title">Repair &amp; Service</h3>
+            <p class="service-desc">Shop and field service for all makes and models. If it runs on diesel and pulls, we can fix it. Honest work, fair pricing.</p>
+          </div>
+
+          <div class="service-card">
+            <p class="service-num">03</p>
+            <h3 class="service-title">Parts</h3>
+            <p class="service-desc">Hard-to-find parts sourced for any brand. Fifty years in the business means we know where to look when the catalog runs dry.</p>
+          </div>
+
+          <div class="service-card" id="implements">
+            <p class="service-num">04</p>
+            <h3 class="service-title">Implements</h3>
+            <p class="service-desc">Box blades, belly mowers, rotary cutters, and attachments in stock. The right implement turns a good tractor into the right tool for the job.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventory ------------------------------------ -->
+    <section class="inventory" id="inventory" aria-labelledby="inventory-title">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">For Sale</p>
+          <h2 class="section-title" id="inventory-title">Current Inventory</h2>
+          <p class="inventory-subtitle">Updated regularly. Call <a href="tel:+14078347272" style="color:var(--rust)">(407) 834-7272</a> for current availability and pricing.</p>
+        </div>
+
+        <div class="inventory-grid" id="home-inventory-grid" aria-live="polite"></div>
+
+        <div id="home-inventory-empty" hidden style="padding:var(--sp-8) 0;text-align:center;">
+          <p style="color:var(--text-muted);margin-bottom:var(--sp-3);">No inventory listed right now &mdash; give us a call to check what&rsquo;s on the lot.</p>
+          <a href="tel:+14078347272" class="btn btn-primary">Call (407) 834-7272</a>
+        </div>
+
+        <div class="inventory-footer" id="home-inventory-footer">
+          <p>More equipment in stock than what&rsquo;s listed here. Inventory changes regularly.</p>
+          <a href="pages/tractors.html" class="btn btn-primary">See All Inventory</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About teaser --------------------------------- -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-inner">
+
+        <div class="about-text">
+          <p class="about-eyebrow">Our Story</p>
+          <h2 class="about-title" id="about-title">Serving Central Florida Since 1972</h2>
+          <p class="about-body">
+            Don and Nancy Martin opened Maitland Tractor in 1972 and built something rare:
+            a business where the same family has been turning wrenches in the same spot for
+            over fifty years. The lot, the shop, the phone number &mdash; all unchanged.
+            The knowledge runs deep.
+          </p>
+          <p class="about-body">
+            Today Randy keeps the tradition going. When your tractor goes down, you&rsquo;re
+            not calling a call center. You&rsquo;re calling someone who knows exactly what
+            it means when your work stops.
+          </p>
+          <a href="pages/about.html" class="about-link">Read the Full Story</a>
+        </div>
+
+        <div class="about-photo">
+          <img
+            src="examples/tractors_photos/massey_ferguson_1010/disel_16hp_new_rotary_mower.png"
+            alt="Massey Ferguson 1010 with rotary mower at the Maitland Tractor lot"
+            width="700"
+            height="500"
+            loading="lazy"
+          >
+          <div class="about-photo-caption">
+            <p>Maitland, FL &middot; US Hwy 17/92</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact strip -------------------------------- -->
+    <section class="contact-strip" id="contact" aria-label="Contact and hours">
+      <div class="contact-inner">
+
+        <div class="contact-block">
+          <p class="contact-block-label">Visit Us</p>
+          <p class="contact-block-value">9225 S US Hwy 17/92</p>
+          <p class="contact-block-sub">Maitland, Florida 32751</p>
+        </div>
+
+        <div class="contact-block">
+          <p class="contact-block-label">Hours</p>
+          <p class="contact-block-value">Mon&ndash;Fri: 8am&ndash;5pm</p>
+          <p class="contact-block-sub">Saturday: 8am&ndash;12pm &middot; Sunday: Closed</p>
+        </div>
+
+        <div class="contact-block">
+          <p class="contact-block-label">Get In Touch</p>
+          <p class="contact-block-value">
+            <a href="tel:+14078347272">(407) 834-7272</a>
+          </p>
+          <p class="contact-block-sub">
+            <a href="mailto:MaitlandTractorLLC@aol.com">MaitlandTractorLLC@aol.com</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer ---------------------------------------- -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Maitland Tractor Sales &amp; Service
+        <span>9225 S US Hwy 17/92 &middot; Maitland, FL 32751</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Maitland Tractor Sales &amp; Service <a href="admin.html" class="footer-admin-link" aria-label="Staff login">&#9679;</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var FB_URL = 'https://maitland-tractor-default-rtdb.firebaseio.com';
+
+      function escHtml(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function toArray(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === 'object') return Object.values(data);
+        return [];
+      }
+
+      function renderHomeCard(t) {
+        var photos = Array.isArray(t.photos) ? t.photos : [];
+        var src = photos.length > 0 ? photos[0] : '';
+        var year = t.year ? escHtml(t.year) + ' ' : '';
+        var price = t.price ? escHtml(t.price) : 'Call for Price';
+        var featuresHtml = (t.features || []).slice(0, 4)
+          .map(function (f) { return '<li class="feature-badge">' + escHtml(f) + '</li>'; })
+          .join('');
+        var photoHtml = src
+          ? '<img src="' + escHtml(src) + '" alt="' + year + escHtml(t.make) + ' ' + escHtml(t.model) + '" loading="lazy" width="600" height="450">'
+          : '';
+        return '<article class="tractor-card">'
+          + '<div class="tractor-card-photo">' + photoHtml + '</div>'
+          + '<div class="tractor-card-body">'
+          + '<p class="tractor-make">' + escHtml(t.make) + '</p>'
+          + '<h3 class="tractor-name">' + year + escHtml(t.model) + '</h3>'
+          + (featuresHtml ? '<ul class="tractor-features">' + featuresHtml + '</ul>' : '')
+          + '<p class="tractor-price">' + price + '</p>'
+          + '</div>'
+          + '<a href="pages/tractors.html" class="tractor-cta">View Details &rarr;</a>'
+          + '</article>';
+      }
+
+      function renderHomeInventory() {
+        var grid = document.getElementById('home-inventory-grid');
+        var empty = document.getElementById('home-inventory-empty');
+        var footer = document.getElementById('home-inventory-footer');
+
+        fetch(FB_URL + '/inventory.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var all = toArray(data).filter(function (t) { return t.status !== 'sold'; });
+
+            if (all.length === 0) {
+              grid.innerHTML = '';
+              empty.hidden = false;
+              footer.hidden = true;
+              return;
+            }
+
+            empty.hidden = true;
+            grid.innerHTML = all.slice(0, 3).map(renderHomeCard).join('');
+            footer.hidden = all.length <= 3;
+          })
+          .catch(function () {
+            /* On error just hide the section gracefully */
+            grid.innerHTML = '';
+            empty.hidden = false;
+            footer.hidden = true;
+          });
+      }
+
+      renderHomeInventory();
+    })();
+  </script>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

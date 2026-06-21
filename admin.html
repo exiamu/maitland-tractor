@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin | Maitland Tractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Password gate — fixed overlay, always on top until dismissed -->
+  <div id="gate" class="admin-gate">
+    <div class="admin-gate-card">
+      <div class="admin-gate-logo">
+        Maitland Tractor
+        <span>Sales &amp; Service &middot; Staff Access</span>
+      </div>
+      <form id="gate-form" class="admin-gate-form" novalidate>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <label for="gate-password" class="admin-label">Password</label>
+          <input
+            type="password"
+            id="gate-password"
+            class="admin-input"
+            autocomplete="current-password"
+            required
+          >
+          <p id="gate-error" class="admin-gate-error" hidden>Incorrect password.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" hidden>
+
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <div class="admin-header-logo">
+          Maitland Tractor <span>Admin</span>
+        </div>
+        <nav class="admin-header-nav">
+          <button type="button" id="back-to-site-btn" class="admin-logout">&#8592; Back to Site</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-main-inner">
+
+        <h1 class="admin-page-title">Dashboard</h1>
+
+        <div class="admin-dashboard-grid">
+
+          <a href="admin/inventory.html" class="admin-dash-card">
+            <p class="admin-dash-card-number" id="inv-count">—</p>
+            <h2 class="admin-dash-card-title">Tractor Inventory</h2>
+            <p class="admin-dash-card-desc">
+              Add, edit, and remove tractor listings. Changes appear on the
+              Inventory page right away.
+            </p>
+            <span class="admin-dash-card-cta">Manage &rarr;</span>
+          </a>
+
+          <a href="admin/implements.html" class="admin-dash-card">
+            <p class="admin-dash-card-number" id="impl-count">—</p>
+            <h2 class="admin-dash-card-title">Implements</h2>
+            <p class="admin-dash-card-desc">
+              Add, edit, and remove implement listings. Changes appear on the
+              Implements page right away.
+            </p>
+            <span class="admin-dash-card-cta">Manage &rarr;</span>
+          </a>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    (function () {
+      var PASSWORD = 'maitland1972';
+      var FB_URL = 'https://maitland-tractor-default-rtdb.firebaseio.com';
+
+      function toArray(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === 'object') return Object.values(data);
+        return [];
+      }
+
+      function isAuth() {
+        return sessionStorage.getItem('mts_admin_auth') === 'true';
+      }
+
+      function showDashboard() {
+        var gate = document.getElementById('gate');
+        gate.style.display = 'none';
+        document.getElementById('dashboard').removeAttribute('hidden');
+        window.scrollTo(0, 0);
+        updateCounts();
+      }
+
+      function updateCounts() {
+        fetch(FB_URL + '/inventory.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            document.getElementById('inv-count').textContent = toArray(data).length;
+          })
+          .catch(function () { document.getElementById('inv-count').textContent = '—'; });
+
+        fetch(FB_URL + '/implements.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            document.getElementById('impl-count').textContent = toArray(data).length;
+          })
+          .catch(function () { document.getElementById('impl-count').textContent = '—'; });
+      }
+
+      /* If already authenticated this browser session, skip gate */
+      if (isAuth()) {
+        showDashboard();
+      }
+
+      document.getElementById('gate-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pw = document.getElementById('gate-password').value;
+        var errorEl = document.getElementById('gate-error');
+        if (pw === PASSWORD) {
+          sessionStorage.setItem('mts_admin_auth', 'true');
+          errorEl.hidden = true;
+          showDashboard();
+        } else {
+          errorEl.hidden = false;
+          document.getElementById('gate-password').value = '';
+          document.getElementById('gate-password').focus();
+        }
+      });
+
+      /* Back to Site — clears session so next admin visit requires password again */
+      document.getElementById('back-to-site-btn').addEventListener('click', function () {
+        sessionStorage.removeItem('mts_admin_auth');
+        window.location.href = 'index.html';
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tractor implements and attachments at Maitland Tractor Sales & Service — box blades, belly mowers, rotary cutters, and more. Maitland, Florida. Call (407) 834-7272.">
+  <title>Implements &amp; Attachments | Maitland Tractor Sales &amp; Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/implements.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Maitland Tractor Sales &amp; Service — Home">
+        Maitland Tractor
+        <span>Sales &amp; Service</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="tractors.html">Inventory</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="implements.html" aria-current="page">Implements</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+14078347272" class="nav-phone">(407) 834-7272</a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page header -->
+    <section class="page-header">
+      <div class="page-header-inner">
+        <p class="page-header-eyebrow">Attachments &amp; Accessories</p>
+        <h1 class="page-header-title">Implements</h1>
+        <p class="page-header-sub">
+          The right attachment turns a good tractor into the right tool for the job.
+          We stock the ones people actually need.
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro section -->
+    <section class="implements-intro" aria-label="About our implements">
+      <div class="implements-intro-inner">
+
+        <div class="implements-intro-text">
+          <h2 class="implements-intro-title">What You Put Behind It Matters</h2>
+          <p class="implements-intro-body">
+            A tractor without an implement is a machine waiting for a purpose. Whether
+            you&rsquo;re grading a driveway, clearing brush, mowing pasture, or turning soil,
+            the attachment defines the work. We keep implements in stock that fit the
+            jobs Central Florida property owners actually need done.
+          </p>
+          <p class="implements-intro-body">
+            We also know implements. If you&rsquo;re not sure what size box blade fits your
+            tractor, or whether a belly mower or a finish mower is right for your
+            property, call us. We&rsquo;ll give you a straight answer.
+          </p>
+          <a href="tel:+14078347272" class="implements-intro-cta">
+            Call (407) 834-7272 to check current stock
+          </a>
+        </div>
+
+        <div class="implements-intro-stat">
+          <p class="implements-intro-stat-value">50+</p>
+          <p class="implements-intro-stat-label">Years matching implements to tractors</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Featured implements — dynamic -->
+    <section class="implements-featured" aria-labelledby="featured-title">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">In Stock</p>
+          <h2 class="section-title" id="featured-title">What&rsquo;s on the Lot</h2>
+        </div>
+
+        <div class="inventory-meta" style="margin-bottom:var(--sp-4);">
+          <p class="inventory-count" id="implements-count">Loading&hellip;</p>
+          <p class="inventory-note">Call to confirm availability &middot; Mon&ndash;Fri 8am&ndash;5pm &middot; Sat 8am&ndash;12pm</p>
+        </div>
+
+        <div class="implements-grid" id="implements-grid" aria-live="polite"></div>
+
+        <div class="no-results" id="no-results" hidden>
+          <p>No implements listed right now. Call us to check current stock.</p>
+          <a href="tel:+14078347272" class="btn btn-primary">(407) 834-7272</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Full catalog — static -->
+    <section class="implements-catalog" aria-labelledby="catalog-title">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">Full Range</p>
+          <h2 class="section-title" id="catalog-title">What We Carry &amp; Can Source</h2>
+        </div>
+
+        <div class="catalog-grid">
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Grading &amp; Earthmoving</h3>
+            <ul class="catalog-category-list">
+              <li>Box blades — multiple widths</li>
+              <li>Land planes</li>
+              <li>Rear blades</li>
+              <li>Landscape rakes</li>
+            </ul>
+          </div>
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Mowing &amp; Cutting</h3>
+            <ul class="catalog-category-list">
+              <li>Belly mowers (mid-mount)</li>
+              <li>Rotary cutters / brush hogs</li>
+              <li>Finish mowers</li>
+              <li>Flail mowers</li>
+            </ul>
+          </div>
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Tillage &amp; Soil</h3>
+            <ul class="catalog-category-list">
+              <li>Tillers (3-pt &amp; PTO-driven)</li>
+              <li>Disc harrows</li>
+              <li>Subsoilers</li>
+              <li>Cultivators</li>
+            </ul>
+          </div>
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Post &amp; Fencing</h3>
+            <ul class="catalog-category-list">
+              <li>Post hole diggers</li>
+              <li>Auger bits — multiple diameters</li>
+              <li>Fencing accessories</li>
+            </ul>
+          </div>
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Loaders &amp; Handling</h3>
+            <ul class="catalog-category-list">
+              <li>Front-end loader buckets</li>
+              <li>Pallet forks</li>
+              <li>Grapple attachments</li>
+              <li>Bale spears</li>
+            </ul>
+          </div>
+
+          <div class="catalog-category">
+            <h3 class="catalog-category-title">Specialty</h3>
+            <ul class="catalog-category-list">
+              <li>Spreaders (fertilizer / seed)</li>
+              <li>Log splitters</li>
+              <li>Sprayers</li>
+              <li>Stump grinders</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="catalog-note">
+          <strong>Stock changes regularly.</strong> Not every item listed here is on the lot
+          at all times. Call us at <a href="tel:+14078347272" style="color:var(--rust)">(407) 834-7272</a>
+          to confirm what we have in hand, or to ask about sourcing something specific.
+          If we don&rsquo;t have it, we usually know where to get it.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Need help callout -->
+    <section class="implements-callout" aria-labelledby="callout-title">
+      <div class="implements-callout-inner">
+
+        <div class="implements-callout-text">
+          <p class="implements-callout-eyebrow">Not Sure What You Need?</p>
+          <h2 class="implements-callout-title" id="callout-title">We&rsquo;ll Tell You Straight</h2>
+          <p class="implements-callout-body">
+            Getting the wrong implement wastes money and time. Tell us your tractor make,
+            model, and what job you&rsquo;re trying to do &mdash; we&rsquo;ll tell you what size and type
+            of attachment makes sense. No upsell. Just a straight answer from someone
+            who&rsquo;s been matching implements to tractors for fifty years.
+          </p>
+        </div>
+
+        <div class="implements-callout-action">
+          <a href="tel:+14078347272" class="btn btn-primary">Call (407) 834-7272</a>
+          <p class="implements-callout-action-note">Mon&ndash;Fri 8am&ndash;5pm &middot; Sat 8am&ndash;12pm</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact strip -->
+    <section class="contact-strip" aria-label="Contact and hours">
+      <div class="contact-inner">
+        <div class="contact-block">
+          <p class="contact-block-label">Visit Us</p>
+          <p class="contact-block-value">9225 S US Hwy 17/92</p>
+          <p class="contact-block-sub">Maitland, Florida 32751</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Hours</p>
+          <p class="contact-block-value">Mon&ndash;Fri: 8am&ndash;5pm</p>
+          <p class="contact-block-sub">Saturday: 8am&ndash;12pm &middot; Sunday: Closed</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Get In Touch</p>
+          <p class="contact-block-value">
+            <a href="tel:+14078347272">(407) 834-7272</a>
+          </p>
+          <p class="contact-block-sub">
+            <a href="mailto:MaitlandTractorLLC@aol.com">MaitlandTractorLLC@aol.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Maitland Tractor Sales &amp; Service
+        <span>9225 S US Hwy 17/92 &middot; Maitland, FL 32751</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Maitland Tractor Sales &amp; Service <a href="../admin.html" class="footer-admin-link" aria-label="Staff login">&#9679;</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var FB_URL = 'https://maitland-tractor-default-rtdb.firebaseio.com';
+
+      function escHtml(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function toArray(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === 'object') return Object.values(data);
+        return [];
+      }
+
+      function safePhotoSrc(path) {
+        if (!path) return '';
+        if (path.startsWith('data:image/')) return path;
+        return '../' + path;
+      }
+
+      function renderCard(t) {
+        const photos = (t.photos && t.photos.length > 0) ? t.photos : [];
+        const primarySrc = photos.length > 0 ? safePhotoSrc(photos[0]) : '';
+        const price = t.price ? escHtml(t.price) : 'Call for Price &amp; Availability';
+        const hasMultiple = photos.length > 1;
+
+        const featuresHtml = (t.features || [])
+          .map(f => `<li class="feature-badge">${escHtml(f)}</li>`)
+          .join('');
+
+        const photoHtml = primarySrc
+          ? `<img src="${escHtml(primarySrc)}" alt="${escHtml(t.name)}" loading="lazy" width="700" height="467">`
+          : `<div class="tractor-card-no-photo">No photo</div>`;
+
+        const photosDataAttr = hasMultiple
+          ? `data-photos='${JSON.stringify(photos)}' data-current="0"`
+          : '';
+
+        const carouselHtml = hasMultiple ? `
+          <button class="photo-nav photo-prev" aria-label="Previous photo" tabindex="0">&#8249;</button>
+          <button class="photo-nav photo-next" aria-label="Next photo" tabindex="0">&#8250;</button>
+          <p class="photo-counter" aria-hidden="true">1 / ${photos.length}</p>
+        ` : '';
+
+        const descHtml = t.description
+          ? `<p class="tractor-description">${escHtml(t.description)}</p>`
+          : '';
+
+        return `
+          <article class="tractor-card">
+            <div class="tractor-card-photo" ${photosDataAttr}>
+              ${photoHtml}
+              ${carouselHtml}
+            </div>
+            <div class="tractor-card-body">
+              <p class="tractor-make">${escHtml(t.category || '')}</p>
+              <h2 class="tractor-name">${escHtml(t.name)}</h2>
+              ${featuresHtml ? `<ul class="tractor-features">${featuresHtml}</ul>` : ''}
+              ${descHtml}
+              <p class="tractor-price">${price}</p>
+            </div>
+            <a href="tel:+14078347272" class="tractor-cta">Call to Inquire &rarr;</a>
+          </article>
+        `;
+      }
+
+      function renderImplements() {
+        var grid = document.getElementById('implements-grid');
+        var countEl = document.getElementById('implements-count');
+        var noResults = document.getElementById('no-results');
+
+        fetch(FB_URL + '/implements.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var all = toArray(data).filter(function (t) { return t.status !== 'sold'; });
+
+            if (all.length === 0) {
+              grid.innerHTML = '';
+              noResults.hidden = false;
+              countEl.innerHTML = 'No listings currently available';
+              return;
+            }
+
+            noResults.hidden = true;
+            grid.innerHTML = all.map(renderCard).join('');
+            var n = all.length;
+            countEl.innerHTML = '<strong>' + n + '</strong> implement' + (n === 1 ? '' : 's') + ' in stock';
+          })
+          .catch(function () {
+            countEl.innerHTML = 'Could not load implements — check your connection.';
+          });
+      }
+
+      renderImplements();
+
+      /* Photo carousel — event delegation on the grid */
+      document.getElementById('implements-grid').addEventListener('click', function (e) {
+        const btn = e.target.closest('.photo-nav');
+        if (!btn) return;
+
+        const photoDiv = btn.closest('.tractor-card-photo');
+        if (!photoDiv) return;
+
+        let photos;
+        try {
+          photos = JSON.parse(photoDiv.dataset.photos || '[]');
+        } catch (_) {
+          return;
+        }
+        if (photos.length <= 1) return;
+
+        let current = parseInt(photoDiv.dataset.current || '0', 10);
+        const total = photos.length;
+
+        if (btn.classList.contains('photo-prev')) {
+          current = (current - 1 + total) % total;
+        } else {
+          current = (current + 1) % total;
+        }
+
+        photoDiv.dataset.current = current;
+
+        const img = photoDiv.querySelector('img');
+        const counter = photoDiv.querySelector('.photo-counter');
+
+        if (img) img.src = safePhotoSrc(photos[current]);
+        if (counter) counter.textContent = `${current + 1} / ${total}`;
+      });
+
+      /* Mobile nav */
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      toggle?.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        navLinks?.classList.toggle('nav-links--open');
+      });
+    })();
+  </script>
+
+</body>
+</html>

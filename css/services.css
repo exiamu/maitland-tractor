@@ -1,0 +1,298 @@
+/* ============================================================
+   MAITLAND TRACTOR — Services Page
+   ============================================================ */
+
+
+/* --- Lead section ------------------------------------------ */
+.services-lead {
+  background: var(--parchment-deep);
+  padding: var(--sp-12) var(--sp-4);
+  border-bottom: 1px solid var(--parchment-border);
+}
+
+.services-lead-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-6), 8vw, var(--sp-12));
+  align-items: center;
+}
+
+.services-lead-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: var(--sp-3);
+}
+
+.services-lead-body {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: var(--sp-4);
+}
+
+.services-lead-body + .services-lead-body {
+  margin-top: calc(-1 * var(--sp-2));
+}
+
+.services-lead-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-condensed);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rust);
+  border-bottom: 1px solid var(--rust);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.services-lead-cta:hover { opacity: 0.75; }
+
+.services-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.stat-block {
+  padding: var(--sp-4);
+  background: var(--parchment);
+  border-left: 3px solid var(--rust);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+
+/* --- Service detail cards ---------------------------------- */
+.services-detail {
+  background: var(--parchment);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.services-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+.service-detail-card {
+  background: var(--parchment-deep);
+  padding: var(--sp-6);
+  border-top: 3px solid var(--rust);
+}
+
+.service-detail-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-3);
+}
+
+.service-detail-body {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: var(--sp-4);
+}
+
+.service-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-detail-list li {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.service-detail-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-family: var(--font-condensed);
+}
+
+
+/* --- Field service callout --------------------------------- */
+.field-service {
+  background: var(--iron);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.field-service-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-8);
+  align-items: center;
+}
+
+.field-service-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.field-service-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.field-service-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.2;
+  margin-bottom: var(--sp-3);
+}
+
+.field-service-body {
+  font-size: var(--text-base);
+  color: var(--text-muted-on-dark);
+  line-height: 1.8;
+  max-width: 55ch;
+}
+
+.field-service-action {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.field-service-action .btn {
+  white-space: nowrap;
+}
+
+.field-service-action-note {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-on-dark);
+  margin-top: var(--sp-2);
+  text-align: center;
+}
+
+
+/* --- Brands strip ------------------------------------------ */
+.brands-strip {
+  background: var(--parchment-deep);
+  padding: var(--sp-8) var(--sp-4);
+  border-top: 1px solid var(--parchment-border);
+  border-bottom: 1px solid var(--parchment-border);
+}
+
+.brands-strip-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.brands-label {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: var(--sp-4);
+}
+
+.brands-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2) var(--sp-6);
+}
+
+.brand-name {
+  font-family: var(--font-condensed);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 900px) {
+  .services-lead-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .services-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stat-block {
+    flex: 1 1 calc(50% - var(--sp-2));
+  }
+
+  .services-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-service-inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  .field-service-action {
+    text-align: left;
+  }
+
+  .field-service-action-note {
+    text-align: left;
+  }
+}
+
+@media (max-width: 580px) {
+  .stat-block {
+    flex: 1 1 100%;
+  }
+}

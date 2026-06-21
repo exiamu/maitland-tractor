@@ -1,0 +1,12 @@
+# Old site source — not for deployment
+examples/current_html_code/
+examples/current_screenshots/
+examples/currentsite/
+examples/errors/
+
+# Claude project file
+CLAUDE.md
+
+# Windows metadata files
+*.Identifier
+*:Zone.Identifier

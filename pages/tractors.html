@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse pre-owned tractors for sale at Maitland Tractor Sales & Service — Massey Ferguson, Kubota, Ford, and more. Call (407) 834-7272.">
+  <title>Inventory | Maitland Tractor Sales &amp; Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/tractors.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Maitland Tractor Sales &amp; Service — Home">
+        Maitland Tractor
+        <span>Sales &amp; Service</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="tractors.html" aria-current="page">Inventory</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="implements.html">Implements</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+14078347272" class="nav-phone">(407) 834-7272</a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page header -->
+    <section class="page-header">
+      <div class="page-header-inner">
+        <p class="page-header-eyebrow">For Sale</p>
+        <h1 class="page-header-title">Inventory</h1>
+        <p class="page-header-sub">
+          Call <a href="tel:+14078347272" style="color:var(--amber)">(407) 834-7272</a>
+          for current availability and pricing. Inventory changes regularly.
+        </p>
+      </div>
+    </section>
+
+    <!-- Inventory grid -->
+    <section class="tractors-section" aria-labelledby="inventory-heading">
+      <div class="section-inner">
+        <h2 class="visually-hidden" id="inventory-heading">Available Tractors</h2>
+
+        <div class="inventory-meta">
+          <p class="inventory-count" id="inventory-count">Loading inventory&hellip;</p>
+          <p class="inventory-note">Prices available by phone &middot; Mon&ndash;Fri 8am&ndash;5pm &middot; Sat 8am&ndash;12pm</p>
+        </div>
+
+        <div class="tractors-grid" id="tractors-grid" aria-live="polite"></div>
+
+        <div class="no-results" id="no-results" hidden>
+          <p>No listings available right now. Call us for current inventory.</p>
+          <a href="tel:+14078347272" class="btn btn-primary">(407) 834-7272</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact strip -->
+    <section class="contact-strip" aria-label="Contact and hours">
+      <div class="contact-inner">
+        <div class="contact-block">
+          <p class="contact-block-label">Visit Us</p>
+          <p class="contact-block-value">9225 S US Hwy 17/92</p>
+          <p class="contact-block-sub">Maitland, Florida 32751</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Hours</p>
+          <p class="contact-block-value">Mon&ndash;Fri: 8am&ndash;5pm</p>
+          <p class="contact-block-sub">Saturday: 8am&ndash;12pm &middot; Sunday: Closed</p>
+        </div>
+        <div class="contact-block">
+          <p class="contact-block-label">Get In Touch</p>
+          <p class="contact-block-value">
+            <a href="tel:+14078347272">(407) 834-7272</a>
+          </p>
+          <p class="contact-block-sub">
+            <a href="mailto:MaitlandTractorLLC@aol.com">MaitlandTractorLLC@aol.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Maitland Tractor Sales &amp; Service
+        <span>9225 S US Hwy 17/92 &middot; Maitland, FL 32751</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Maitland Tractor Sales &amp; Service <a href="../admin.html" class="footer-admin-link" aria-label="Staff login">&#9679;</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var FB_URL = 'https://maitland-tractor-default-rtdb.firebaseio.com';
+
+      function escHtml(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function toArray(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === 'object') return Object.values(data);
+        return [];
+      }
+
+      function safePhotoSrc(path) {
+        if (!path) return '';
+        if (path.startsWith('data:image/')) return path;
+        return '../' + path;
+      }
+
+      function renderCard(t) {
+        const photos = (t.photos && t.photos.length > 0) ? t.photos : [];
+        const primarySrc = photos.length > 0 ? safePhotoSrc(photos[0]) : '';
+        const year = t.year ? escHtml(t.year) + ' ' : '';
+        const price = t.price ? escHtml(t.price) : 'Call for Price';
+        const hasMultiple = photos.length > 1;
+
+        const featuresHtml = (t.features || [])
+          .map(f => `<li class="feature-badge">${escHtml(f)}</li>`)
+          .join('');
+
+        const photoHtml = primarySrc
+          ? `<img src="${escHtml(primarySrc)}" alt="${year}${escHtml(t.make)} ${escHtml(t.model)}" loading="lazy" width="600" height="450">`
+          : `<div class="tractor-card-no-photo">No photo</div>`;
+
+        const photosDataAttr = hasMultiple
+          ? `data-photos='${JSON.stringify(photos)}' data-current="0"`
+          : '';
+
+        const carouselHtml = hasMultiple ? `
+          <button class="photo-nav photo-prev" aria-label="Previous photo" tabindex="0">&#8249;</button>
+          <button class="photo-nav photo-next" aria-label="Next photo" tabindex="0">&#8250;</button>
+          <p class="photo-counter" aria-hidden="true">1 / ${photos.length}</p>
+        ` : '';
+
+        const descHtml = t.description
+          ? `<p class="tractor-description">${escHtml(t.description)}</p>`
+          : '';
+
+        return `
+          <article class="tractor-card">
+            <div class="tractor-card-photo" ${photosDataAttr}>
+              ${photoHtml}
+              ${carouselHtml}
+            </div>
+            <div class="tractor-card-body">
+              <p class="tractor-make">${escHtml(t.make)}</p>
+              <h2 class="tractor-name">${year}${escHtml(t.model)}</h2>
+              ${featuresHtml ? `<ul class="tractor-features">${featuresHtml}</ul>` : ''}
+              ${descHtml}
+              <p class="tractor-price">${price}</p>
+            </div>
+            <a href="tel:+14078347272" class="tractor-cta">Call to Inquire &rarr;</a>
+          </article>
+        `;
+      }
+
+      function renderInventory() {
+        var grid = document.getElementById('tractors-grid');
+        var countEl = document.getElementById('inventory-count');
+        var noResults = document.getElementById('no-results');
+
+        fetch(FB_URL + '/inventory.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var all = toArray(data).filter(function (t) { return t.status !== 'sold'; });
+
+            if (all.length === 0) {
+              grid.innerHTML = '';
+              noResults.hidden = false;
+              countEl.innerHTML = 'No listings currently available';
+              return;
+            }
+
+            noResults.hidden = true;
+            grid.innerHTML = all.map(renderCard).join('');
+            var n = all.length;
+            countEl.innerHTML = '<strong>' + n + '</strong> tractor' + (n === 1 ? '' : 's') + ' available';
+          })
+          .catch(function () {
+            countEl.innerHTML = 'Could not load inventory — check your connection.';
+          });
+      }
+
+      renderInventory();
+
+      /* Photo carousel — event delegation on the grid */
+      document.getElementById('tractors-grid').addEventListener('click', function (e) {
+        const btn = e.target.closest('.photo-nav');
+        if (!btn) return;
+
+        const photoDiv = btn.closest('.tractor-card-photo');
+        if (!photoDiv) return;
+
+        let photos;
+        try {
+          photos = JSON.parse(photoDiv.dataset.photos || '[]');
+        } catch (_) {
+          return;
+        }
+        if (photos.length <= 1) return;
+
+        let current = parseInt(photoDiv.dataset.current || '0', 10);
+        const total = photos.length;
+
+        if (btn.classList.contains('photo-prev')) {
+          current = (current - 1 + total) % total;
+        } else {
+          current = (current + 1) % total;
+        }
+
+        photoDiv.dataset.current = current;
+
+        const img = photoDiv.querySelector('img');
+        const counter = photoDiv.querySelector('.photo-counter');
+
+        if (img) {
+          img.src = safePhotoSrc(photos[current]);
+          img.alt = img.alt.replace(/^Photo \d+ of \d+: /, '') ;
+        }
+        if (counter) counter.textContent = `${current + 1} / ${total}`;
+      });
+
+      /* Mobile nav toggle */
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      toggle?.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        navLinks?.classList.toggle('nav-links--open');
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+/* ============================================================
+   MAITLAND TRACTOR — Tractors Inventory Page
+   ============================================================ */
+
+
+/* --- Inventory section ------------------------------------- */
+.tractors-section {
+  background: var(--parchment);
+  padding: var(--sp-12) var(--sp-4);
+  min-height: 50vh;
+}
+
+.inventory-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--parchment-border);
+}
+
+.inventory-count {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.inventory-count strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.inventory-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+
+/* --- Tractors grid ----------------------------------------- */
+.tractors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+.tractor-description {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--sp-3);
+}
+
+.tractor-card-no-photo {
+  width: 100%;
+  height: 100%;
+  background: var(--parchment-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+
+/* --- Photo carousel controls ------------------------------ */
+.tractor-card-photo {
+  position: relative;
+}
+
+.photo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: oklch(14% 0.022 42 / 0.72);
+  border: none;
+  color: var(--text-on-dark);
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 2.25rem;
+  height: 3.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  padding: 0;
+  /* Always visible on touch devices; fade in on hover-capable devices */
+  opacity: 0.85;
+}
+
+.photo-nav:hover,
+.photo-nav:focus-visible {
+  background: oklch(14% 0.022 42 / 0.92);
+  opacity: 1;
+  outline: 2px solid var(--amber);
+  outline-offset: -2px;
+}
+
+/* On pointer devices: hide until card is hovered */
+@media (hover: hover) and (pointer: fine) {
+  .photo-nav {
+    opacity: 0;
+  }
+  .tractor-card:hover .photo-nav {
+    opacity: 0.85;
+  }
+  .tractor-card:hover .photo-nav:hover {
+    opacity: 1;
+  }
+}
+
+.photo-prev { left: 0; }
+.photo-next { right: 0; }
+
+.photo-counter {
+  position: absolute;
+  bottom: var(--sp-1);
+  right: var(--sp-1);
+  z-index: 2;
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-on-dark);
+  background: oklch(14% 0.022 42 / 0.65);
+  padding: 0.15rem 0.45rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* --- No results state -------------------------------------- */
+.no-results {
+  text-align: center;
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.no-results p {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}
+
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 900px) {
+  .tractors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .tractors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

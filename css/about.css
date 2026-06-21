@@ -1,0 +1,355 @@
+/* ============================================================
+   MAITLAND TRACTOR — About Page
+   ============================================================ */
+
+
+/* --- Founding section -------------------------------------- */
+.about-founding {
+  background: var(--parchment);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.about-founding-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-6), 8vw, var(--sp-12));
+  align-items: start;
+}
+
+.about-founding-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.about-founding-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.about-founding-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+}
+
+.about-founding-body {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: var(--sp-3);
+}
+
+.about-founding-photo {
+  position: relative;
+}
+
+.about-founding-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.78) sepia(0.12) contrast(1.05);
+}
+
+.about-founding-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--sp-3);
+  background: linear-gradient(transparent, oklch(8% 0.015 42 / 0.82));
+}
+
+.about-founding-photo-caption p {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+
+/* --- Pull quote -------------------------------------------- */
+.about-pullquote {
+  background: var(--iron);
+  padding: var(--sp-12) var(--sp-4);
+  border-top: 1px solid var(--iron-border);
+  border-bottom: 1px solid var(--iron-border);
+}
+
+.about-pullquote-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-pullquote-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.5;
+  color: var(--rust);
+  display: block;
+  margin-bottom: var(--sp-4);
+  user-select: none;
+}
+
+.about-pullquote blockquote {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-on-dark);
+  line-height: 1.3;
+  margin-bottom: var(--sp-4);
+}
+
+.about-pullquote-attribution {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+
+/* --- The place section ------------------------------------- */
+.about-place {
+  background: var(--parchment-deep);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.about-place-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-6), 8vw, var(--sp-12));
+  align-items: center;
+}
+
+.about-place-photo {
+  position: relative;
+}
+
+.about-place-photo img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.8) sepia(0.1) contrast(1.05);
+}
+
+.about-place-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--sp-3);
+  background: linear-gradient(transparent, oklch(8% 0.015 42 / 0.82));
+}
+
+.about-place-photo-caption p {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.about-place-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.about-place-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.about-place-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+}
+
+.about-place-body {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: var(--sp-3);
+}
+
+.about-facts {
+  margin-top: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.about-fact {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.about-fact-year {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 3rem;
+}
+
+
+/* --- Today section ----------------------------------------- */
+.about-today {
+  background: var(--parchment);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.about-today-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-6), 8vw, var(--sp-12));
+  align-items: center;
+}
+
+.about-today-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.about-today-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.about-today-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+}
+
+.about-today-body {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: var(--sp-3);
+}
+
+.about-today-cta {
+  margin-top: var(--sp-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.about-today-photo {
+  position: relative;
+}
+
+.about-today-photo img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.82) sepia(0.1) contrast(1.05);
+}
+
+.about-today-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--sp-3);
+  background: linear-gradient(transparent, oklch(8% 0.015 42 / 0.82));
+}
+
+.about-today-photo-caption p {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 900px) {
+  .about-founding-inner,
+  .about-place-inner,
+  .about-today-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-founding-photo img,
+  .about-place-photo img,
+  .about-today-photo img {
+    height: 55vw;
+    min-height: 260px;
+  }
+
+  /* On mobile, photo comes after text for about-place */
+  .about-place-photo {
+    order: -1;
+  }
+
+  .about-pullquote blockquote {
+    font-size: var(--text-xl);
+  }
+}

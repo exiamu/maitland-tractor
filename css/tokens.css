@@ -1,0 +1,58 @@
+/* ============================================================
+   MAITLAND TRACTOR — Design Tokens
+   Every value in this file is a design decision.
+   Never use raw color/size values outside this file.
+   ============================================================ */
+
+:root {
+
+  /* --- Colors ----------------------------------------------- */
+  --iron:               oklch(14% 0.022 42);   /* cast iron near-black — hero, nav, footer */
+  --iron-border:        oklch(22% 0.025 42);   /* subtle border on dark surfaces */
+  --iron-mid:           oklch(25% 0.022 42);   /* dividers inside dark sections */
+
+  --parchment:          oklch(96% 0.018 82);   /* main page background — aged paper */
+  --parchment-deep:     oklch(91% 0.022 78);   /* alternate section background */
+  --parchment-border:   oklch(86% 0.020 78);   /* borders on light surfaces */
+
+  --rust:               oklch(52% 0.20 32);    /* primary accent — CTAs, emphasis */
+  --rust-hover:         oklch(46% 0.20 32);    /* CTA hover — same hue, darker */
+
+  --amber:              oklch(64% 0.12 66);    /* secondary accent — eyebrows, decorative, "Est. 1972" */
+
+  --text-primary:       oklch(18% 0.02 42);    /* headings + body on light bg */
+  --text-muted:         oklch(44% 0.018 50);   /* captions, labels, secondary on light bg */
+  --text-on-dark:       oklch(93% 0.014 82);   /* primary text on iron bg */
+  --text-muted-on-dark: oklch(72% 0.018 70);   /* secondary text on iron bg */
+
+
+  /* --- Typography ------------------------------------------- */
+  --font-display:   'Playfair Display', Georgia, serif;
+  --font-condensed: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body:      'DM Sans', system-ui, sans-serif;
+
+  /* Fluid type scale — Perfect Fourth base, clamp() for continuous scaling */
+  --text-xs:   clamp(0.75rem,  0.70rem + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.85rem + 0.15vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.5vw,  1.333rem);
+  --text-xl:   clamp(1.333rem, 1.2rem  + 0.75vw, 1.777rem);
+  --text-2xl:  clamp(1.777rem, 1.5rem  + 1.5vw,  2.369rem);
+  --text-hero: clamp(2.75rem,  2rem    + 3.5vw,  5rem);
+
+
+  /* --- Spacing — 8pt grid ----------------------------------- */
+  --sp-1:  0.5rem;   /*  8px */
+  --sp-2:  1rem;     /* 16px */
+  --sp-3:  1.5rem;   /* 24px */
+  --sp-4:  2rem;     /* 32px */
+  --sp-6:  3rem;     /* 48px */
+  --sp-8:  4rem;     /* 64px */
+  --sp-12: 6rem;     /* 96px */
+
+
+  /* --- Layout ----------------------------------------------- */
+  --max-width:  1200px;
+  --nav-height: 5rem;
+
+}

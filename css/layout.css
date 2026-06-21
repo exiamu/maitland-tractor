@@ -1,0 +1,278 @@
+/* ============================================================
+   MAITLAND TRACTOR — Layout
+   Nav, footer, section wrappers, shared section typography.
+   Every page includes this file.
+   ============================================================ */
+
+
+/* --- Navigation -------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: var(--iron);
+  border-bottom: 1px solid var(--iron-border);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.15;
+  flex-shrink: 0;
+}
+
+.nav-logo span {
+  display: block;
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-top: 0.1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.nav-links a {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted-on-dark);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--text-on-dark);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--amber);
+}
+
+.nav-phone {
+  font-family: var(--font-condensed);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--rust);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.nav-phone:hover { color: var(--amber); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-on-dark);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+
+/* --- Footer ------------------------------------------------ */
+.footer {
+  background: var(--iron);
+  border-top: 1px solid var(--iron-border);
+  padding: var(--sp-6) var(--sp-4);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-on-dark);
+}
+
+.footer-brand span {
+  display: block;
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-on-dark);
+  margin-top: 0.3rem;
+}
+
+.footer-copy {
+  font-size: var(--text-xs);
+  color: var(--text-muted-on-dark);
+}
+
+/* Hidden staff access link — sits after copyright text, barely visible */
+.footer-admin-link {
+  color: var(--iron-border);
+  text-decoration: none;
+  margin-left: 0.4rem;
+  font-size: 0.65em;
+  line-height: 1;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+.footer-admin-link:hover,
+.footer-admin-link:focus {
+  color: var(--amber);
+  outline: none;
+}
+
+
+/* --- Shared section wrappers ------------------------------- */
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: var(--sp-8);
+}
+
+.section-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-1);
+}
+
+.section-eyebrow::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--amber);
+  margin-top: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-top: var(--sp-2);
+}
+
+.section-title--on-dark {
+  color: var(--text-on-dark);
+}
+
+
+/* --- Page header (inner pages) ----------------------------- */
+.page-header {
+  background: var(--iron);
+  padding: calc(var(--nav-height) + var(--sp-8)) var(--sp-4) var(--sp-8);
+  border-bottom: 3px solid var(--rust);
+}
+
+.page-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-header-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+}
+
+.page-header-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.15;
+}
+
+.page-header-sub {
+  font-size: var(--text-base);
+  color: var(--text-muted-on-dark);
+  margin-top: var(--sp-2);
+  max-width: 55ch;
+}
+
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 900px) {
+  .nav-links,
+  .nav-phone {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links--open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--iron);
+    border-top: 1px solid var(--iron-border);
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+    gap: 0;
+  }
+
+  .nav-links--open li {
+    border-bottom: 1px solid var(--iron-border);
+  }
+
+  .nav-links--open a {
+    display: block;
+    font-size: var(--text-base);
+    padding: var(--sp-2) 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+}

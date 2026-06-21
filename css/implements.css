@@ -1,0 +1,272 @@
+/* ============================================================
+   MAITLAND TRACTOR — Implements Page
+   ============================================================ */
+
+
+/* --- Intro section ----------------------------------------- */
+.implements-intro {
+  background: var(--parchment-deep);
+  padding: var(--sp-8) var(--sp-4);
+  border-bottom: 1px solid var(--parchment-border);
+}
+
+.implements-intro-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-6), 8vw, var(--sp-12));
+  align-items: center;
+}
+
+.implements-intro-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-3);
+}
+
+.implements-intro-body {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: var(--sp-3);
+}
+
+.implements-intro-body:last-child {
+  margin-bottom: 0;
+}
+
+.implements-intro-cta {
+  display: inline-flex;
+  font-family: var(--font-condensed);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rust);
+  border-bottom: 1px solid var(--rust);
+  padding-bottom: 2px;
+  margin-top: var(--sp-4);
+  transition: opacity 0.2s;
+}
+
+.implements-intro-cta:hover { opacity: 0.75; }
+
+.implements-intro-stat {
+  text-align: center;
+  background: var(--parchment);
+  padding: var(--sp-6);
+  border-top: 3px solid var(--rust);
+}
+
+.implements-intro-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: var(--sp-1);
+}
+
+.implements-intro-stat-label {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+
+/* --- Featured implements grid ------------------------------ */
+.implements-featured {
+  background: var(--parchment);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.implements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+/* Implement cards reuse .tractor-card from components.css    */
+/* These overrides make photos taller for implement shots     */
+.implements-grid .tractor-card-photo {
+  aspect-ratio: 3/2;
+}
+
+
+/* --- Full catalog ------------------------------------------ */
+.implements-catalog {
+  background: var(--parchment-deep);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.catalog-category {
+  background: var(--parchment);
+  padding: var(--sp-4);
+  border-top: 3px solid var(--amber);
+}
+
+.catalog-category-title {
+  font-family: var(--font-condensed);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+}
+
+.catalog-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.catalog-category-list li {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.catalog-category-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-family: var(--font-condensed);
+}
+
+.catalog-note {
+  margin-top: var(--sp-6);
+  padding: var(--sp-4);
+  background: var(--parchment);
+  border-left: 3px solid var(--rust);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.catalog-note strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+
+/* --- Need help callout ------------------------------------- */
+.implements-callout {
+  background: var(--iron);
+  padding: var(--sp-12) var(--sp-4);
+}
+
+.implements-callout-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-8);
+  align-items: center;
+}
+
+.implements-callout-eyebrow {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.implements-callout-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.implements-callout-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.2;
+  margin-bottom: var(--sp-3);
+}
+
+.implements-callout-body {
+  font-size: var(--text-base);
+  color: var(--text-muted-on-dark);
+  line-height: 1.8;
+  max-width: 52ch;
+}
+
+.implements-callout-action {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.implements-callout-action-note {
+  font-family: var(--font-condensed);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-on-dark);
+  margin-top: var(--sp-2);
+  text-align: center;
+}
+
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 900px) {
+  .implements-intro-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .implements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .implements-callout-inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  .implements-callout-action {
+    text-align: left;
+  }
+
+  .implements-callout-action-note {
+    text-align: left;
+  }
+}
+
+@media (max-width: 580px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
