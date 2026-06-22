@@ -295,4 +295,10 @@
   .stat-block {
     flex: 1 1 100%;
   }
+
+  .services-lead,
+  .services-detail,
+  .field-service {
+    padding: var(--sp-8) var(--sp-4);
+  }
 }

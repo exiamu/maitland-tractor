@@ -353,3 +353,12 @@
     font-size: var(--text-xl);
   }
 }
+
+@media (max-width: 640px) {
+  .about-founding,
+  .about-pullquote,
+  .about-place,
+  .about-today {
+    padding: var(--sp-8) var(--sp-4);
+  }
+}

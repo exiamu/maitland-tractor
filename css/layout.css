@@ -93,8 +93,13 @@
   color: var(--text-on-dark);
   font-size: 1.4rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   line-height: 1;
+}
+
+/* Phone CTA lives only in the mobile dropdown — hidden everywhere else */
+.nav-phone-item {
+  display: none;
 }
 
 
@@ -271,8 +276,33 @@
     padding: var(--sp-2) 0;
   }
 
+  /* Phone link at bottom of mobile menu */
+  .nav-links--open .nav-phone-item {
+    display: block;
+    border-bottom: none;
+    border-top: 1px solid var(--iron-mid);
+    margin-top: var(--sp-2);
+    padding-top: var(--sp-2);
+  }
+
+  .nav-links--open .nav-phone-item a {
+    color: var(--rust);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    padding: var(--sp-2) 0;
+  }
+
   .footer-inner {
     flex-direction: column;
     gap: var(--sp-2);
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    padding-top: calc(var(--nav-height) + var(--sp-4));
+    padding-bottom: var(--sp-6);
   }
 }

@@ -99,6 +99,15 @@
   line-height: 1.5;
 }
 
+.trust-value a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.trust-value a:hover {
+  color: var(--amber);
+}
+
 
 /* --- Service cards ----------------------------------------- */
 .service-card {

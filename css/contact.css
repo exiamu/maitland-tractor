@@ -227,3 +227,9 @@
     gap: var(--sp-4);
   }
 }
+
+@media (max-width: 640px) {
+  .contact-main {
+    padding: var(--sp-8) var(--sp-4);
+  }
+}

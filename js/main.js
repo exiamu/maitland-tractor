@@ -4,9 +4,14 @@
    ============================================================ */
 
 (function () {
-  /* Mobile nav toggle */
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
+
+  /* Inject tap-to-call link into mobile dropdown */
+  const phoneLi = document.createElement('li');
+  phoneLi.className = 'nav-phone-item';
+  phoneLi.innerHTML = '<a href="tel:+14078347272">(407) 834-7272</a>';
+  navLinks?.appendChild(phoneLi);
 
   toggle?.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
@@ -14,7 +19,6 @@
     navLinks?.classList.toggle('nav-links--open');
   });
 
-  /* Close mobile nav when a link is clicked */
   navLinks?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('nav-links--open');
@@ -22,7 +26,6 @@
     });
   });
 
-  /* Active nav link — mark current page */
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   navLinks?.querySelectorAll('a').forEach(link => {
     const linkPath = link.getAttribute('href')?.split('/').pop() || '';

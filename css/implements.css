@@ -269,4 +269,10 @@
   .catalog-grid {
     grid-template-columns: 1fr;
   }
+
+  .implements-featured,
+  .implements-catalog,
+  .implements-callout {
+    padding: var(--sp-8) var(--sp-4);
+  }
 }

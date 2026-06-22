@@ -268,4 +268,23 @@
   .inventory-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-content {
+    padding: var(--sp-6) var(--sp-4);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+  }
+
+  .services,
+  .inventory,
+  .about {
+    padding: var(--sp-8) var(--sp-4);
+  }
 }
