@@ -251,16 +251,10 @@
         if (counter) counter.textContent = `${current + 1} / ${total}`;
       });
 
-      /* Mobile nav toggle */
-      const toggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      toggle?.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-        navLinks?.classList.toggle('nav-links--open');
-      });
     })();
   </script>
+
+  <script src="../js/main.js"></script>
 
 </body>
 </html>

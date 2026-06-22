@@ -271,6 +271,15 @@
 
   .hero-content {
     padding: var(--sp-6) var(--sp-4);
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    justify-content: center;
+  }
+
+  .hero-sub {
+    max-width: none;
   }
 
   .hero-actions {
